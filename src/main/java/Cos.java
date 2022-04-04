@@ -1,5 +1,6 @@
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import java.math.*;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -35,6 +36,7 @@ public class Cos {
         if (Math.abs(result) > 1) return Double.NaN;
         if (Math.abs(result) <= eps) return 0;
         return result;
+
     }
 
     public double writeResultToCSV(double x, double eps, Writer out) {

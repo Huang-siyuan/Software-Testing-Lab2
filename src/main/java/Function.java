@@ -9,21 +9,26 @@ import java.io.Writer;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Function {
     Csc Csc;
     Log log;
     Ln ln;
     Tan tan;
 
+    public Function(){
+        this.Csc = new Csc();
+        this.log = new Log();
+        this.ln = new Ln();
+        this.tan = new Tan();
+    }
 
     public double SystemSolve(double x, double eps) {
         if (x <= 0) {
             return
-                    Csc.csc(x, eps) * Csc.csc(x, eps) + tan.tan(x, eps) * tan.tan(x, eps);
+                    (Csc.csc(x, eps) * Csc.csc(x, eps) + tan.tan(x, eps)) * tan.tan(x, eps);
         } else {
-            return (Math.pow(((ln.ln(x*x,eps))/log.log(2,x,eps) + ln.ln(x,eps)),3)
-                    /(log.log(5,x,eps) * log.log(2,x,eps)));
+            return Math.pow(ln.ln(x, eps)/log.log(2, x, eps) + ln.ln(x,eps),3)
+                    /(log.log(5, x, eps) + log.log(2, x, eps));
         }
     }
 
